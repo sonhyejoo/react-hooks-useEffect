@@ -15,6 +15,20 @@ const Cat = () => {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
+    if (!statusChange) {
+      alert("Please enter a code");
+      setStatus(404);
+    }
+    if (!VALID_STATUS_CODES.find((el) => el == statusChange)) {
+      alert(
+        `Code ${statusChange} might exist, but it is not a proper Cat Status code.`
+      );
+      setStatus(404);
+    }
+    return;
+  }, [statusChange]);
+
+  useEffect(() => {
     return localStorage.setItem("catStatus", statusChange);
   }, [statusChange]);
 

@@ -15,6 +15,10 @@ const Cat = () => {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
+    return localStorage.setItem("catStatus", statusChange);
+  }, [statusChange]);
+
+  useEffect(() => {
     const colorInterval = setInterval(() => {
       setColorIdx((prevIdx) => (prevIdx + 1) % COLORS.length);
     }, delayChange);
